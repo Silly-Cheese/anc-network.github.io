@@ -3,25 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>A.N.C. Network - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
-<body onload="checkAccess('alliance')">
-  <header>
-    <h1>A.N.C. Network</h1>
-    <p>Allied Nexus Collaborative Network</p>
-  </header>
-  <nav>
-    <a href="home.html">Home</a>
-    <a href="alliances.html">Alliances</a>
-    <a href="announcements.html">Announcements</a>
-    <a href="https://discord.gg/fRys9tqeKq" target="_blank">Discord</a>
-    <a href="https://forms.gle/JVeTxAaamrpG6XUx7" target="_blank">Apply</a>
-    <a href="#" onclick="signOut()" style="color: red;">Sign Out</a>
-  </nav>
+<body onload="checkAccess('guest')">
+  <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>Menu</h2>
+      <button class="close-btn" onclick="toggleSidebar()">✕</button>
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="alliances.html">Alliances</a></li>
+      <li><a href="announcements.html">Announcements</a></li>
+      <li><a href="https://discord.gg/fRys9tqeKq" target="_blank">Discord</a></li>
+      <li><a href="https://forms.gle/JVeTxAaamrpG6XUx7" target="_blank">Apply</a></li>
+      <li><a href="#" onclick="signOut()" style="color: red;">Sign Out</a></li>
+    </ul>
+  </aside>
+
   <main>
-    <h2>Welcome to the A.N.C. Network</h2>
-    <p>Allied Nexus Collaborative Network (A.N.C. Network) is an upcoming network of alliances where people can join and communicate with other communities.</p>
+    <h1>Welcome to the ANC Network</h1>
+    <p>The Allied Nexus Collaborative (ANC) Network is a futuristic, professional, and secure hub for alliance management, tools, applications, and admin operations. It serves as a foundational platform for coordination and communication among partner organizations.</p>
+    <h2>Leadership</h2>
+    <ul>
+      <li><strong>Owner/Founder:</strong> Executive_Eagle</li>
+      <li><strong>Owner:</strong> Aka_Ivory</li>
+      <li><strong>Co-Owner:</strong> Suna</li>
+    </ul>
   </main>
 </body>
 </html>
