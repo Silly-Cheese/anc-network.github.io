@@ -3,22 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <title>A.N.C. Network - Announcements</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body onload="checkAccess('alliance')">
-  <header>
-    <h1>A.N.C. Network</h1>
-    <p>Allied Nexus Collaborative Network</p>
-  </header>
-  <nav>
-    <a href="home.html">Home</a>
-    <a href="alliances.html">Alliances</a>
-    <a href="announcements.html">Announcements</a>
-    <a href="https://discord.gg/fRys9tqeKq" target="_blank">Discord</a>
-    <a href="https://forms.gle/JVeTxAaamrpG6XUx7" target="_blank">Apply</a>
-    <a href="#" onclick="signOut()" style="color: red;">Sign Out</a>
-  </nav>
+  <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>Menu</h2>
+      <button class="close-btn" onclick="toggleSidebar()">✕</button>
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="alliances.html">Alliances</a></li>
+      <li><a href="announcements.html">Announcements</a></li>
+      <li><a href="https://discord.gg/fRys9tqeKq" target="_blank">Discord</a></li>
+      <li><a href="https://forms.gle/JVeTxAaamrpG6XUx7" target="_blank">Apply</a></li>
+      <li><a href="#" onclick="signOut()" style="color: red;">Sign Out</a></li>
+    </ul>
+  </aside>
+
   <main>
     <h2>Latest Announcements</h2>
     <ul>
