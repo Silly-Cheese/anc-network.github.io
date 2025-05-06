@@ -1,46 +1,31 @@
-const codes = {
-  guest: ['Guest123', '123456'],
-  alliance: ['TRG1'],
-  owner: ['OwnersOfANC', '341479', '421524']
-};
+<!DOCTYPE html>
+<html lang="en">
 
-function login() {
-  const entered = document.getElementById('codeInput').value.trim();
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A.N.C. Network - Login</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
 
-  if (codes.owner.includes(entered)) {
-    localStorage.setItem('accessLevel', 'owner');
-    window.location.href = 'home.html';
-  } else if (codes.alliance.includes(entered)) {
-    localStorage.setItem('accessLevel', 'alliance');
-    window.location.href = 'home.html';
-  } else if (codes.guest.includes(entered)) {
-    localStorage.setItem('accessLevel', 'guest');
-    window.location.href = 'alliances.html';
-  } else {
-    alert('Invalid code.');
-  }
-}
+<body onload="checkAccess('guest')">
+  <header>
+    <h1>A.N.C. Network</h1>
+    <p>Allied Nexus Collaborative Network</p>
+  </header>
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="alliances.html">Alliances</a>
+    <a href="announcements.html">Announcements</a>
+    <a href="https://discord.gg/fRys9tqeKq" target="_blank">Discord</a>
+    <a href="https://forms.gle/JVeTxAaamrpG6XUx7" target="_blank">Apply</a>
+  </nav>
+  <main>
+    <h2>Login</h2>
+    <input type="text" id="codeInput" placeholder="Enter your password code">
+    <button onclick="login()">Login</button>
+  </main>
+</body>
 
-function checkAccess(requiredLevel) {
-  const access = localStorage.getItem('accessLevel');
-  const allowed = {
-    guest: ['guest', 'alliance', 'owner'],
-    alliance: ['alliance', 'owner'],
-    owner: ['owner']
-  };
-
-  if (!allowed[requiredLevel].includes(access)) {
-    alert('Access denied. Please log in.');
-    window.location.href = 'index.html';
-  }
-}
-
-function signOut() {
-  localStorage.removeItem('accessLevel');
-  window.location.href = 'index.html';
-}
-
-function toggleSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  sidebar.classList.toggle('open');
-}
+</html>
