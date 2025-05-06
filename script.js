@@ -1,7 +1,7 @@
 const codes = {
-  guest: ['Guest123','123456'],
+  guest: ['Guest123', '123456'],
   alliance: ['TRG1'],
-  owner: ['OwnersOfANC','341479','421524']
+  owner: ['OwnersOfANC', '341479', '421524']
 };
 
 function login() {
@@ -38,4 +38,9 @@ function checkAccess(requiredLevel) {
 function signOut() {
   localStorage.removeItem('accessLevel');
   window.location.href = 'index.html';
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('open');
 }
