@@ -1,5 +1,5 @@
 const codes = {
-  guest: ['guest123'],
+  guest: ['Guest123'],
   alliance: ['TRG1'],
   owner: ['OwnersOfANC']
 };
