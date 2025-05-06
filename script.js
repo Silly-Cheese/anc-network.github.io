@@ -1,7 +1,7 @@
 const codes = {
-  guest: ['Guest123'],
+  guest: ['Guest123','123456'],
   alliance: ['TRG1'],
-  owner: ['OwnersOfANC']
+  owner: ['OwnersOfANC','341479','421524']
 };
 
 function login() {
