@@ -1,39 +1,71 @@
-const users = {
-    'guestcode': 'guest',
-    'allycode': 'alliance',
-    'ownercode': 'owner'
+// Access codes mapped to roles
+const accessCodes = {
+  'guestcode': 'guest',
+  'allycode': 'alliance',
+  'ownercode': 'owner'
 };
+
+// Login logic
 function login() {
-    const code = document.getElementById('accessCode').value.trim();
-    const level = users[code];
-    if (level) {
-        localStorage.setItem('accessLevel', level);
-        window.location.href = 'home.html';
-    } else {
-        alert('Invalid code.');
-    }
+  const input = document.getElementById('accessCode');
+  if (!input) return;
+
+  const code = input.value.trim();
+  const level = accessCodes[code];
+
+  if (level) {
+    localStorage.setItem('accessLevel', level);
+    window.location.href = 'home.html';
+  } else {
+    alert('Invalid access code.');
+  }
 }
-function checkAccess(requiredLevel) {
-    const level = localStorage.getItem('accessLevel');
-    if (!level || (requiredLevel && level !== requiredLevel)) {
-        window.location.href = 'index.html';
-    }
-}
+
+// Logout clears session
 function logout() {
-    localStorage.clear();
-    window.location.href = 'index.html';
+  localStorage.clear();
+  window.location.href = 'index.html';
 }
+
+// Check if the current user has access to the page
+function checkAccess(allowedLevels = []) {
+  const level = localStorage.getItem('accessLevel');
+  if (!level || (allowedLevels.length && !allowedLevels.includes(level))) {
+    window.location.href = 'index.html';
+  }
+}
+
+// Dynamic navbar injection
+function injectNavbar() {
+  const nav = document.getElementById('navbar');
+  if (!nav) return;
+
+  const level = localStorage.getItem('accessLevel');
+
+  const links = [
+    { href: 'home.html', label: 'Home' },
+    { href: 'alliances.html', label: 'Alliances' },
+    { href: 'announcements.html', label: 'Announcements' },
+    { href: 'tools.html', label: 'Tools' },
+    { href: 'applications.html', label: 'Applications' },
+  ];
+
+  if (level === 'owner') {
+    links.push({ href: 'admin.html', label: 'Admin' });
+  }
+
+  links.push({ href: '#', label: 'Logout', onclick: 'logout()' });
+
+  nav.innerHTML = links.map(link =>
+    `<a href="${link.href}" ${link.onclick ? `onclick="${link.onclick}"` : ''}>${link.label}</a>`
+  ).join('');
+}
+
+// DOM ready handler
 document.addEventListener('DOMContentLoaded', () => {
-    const nav = document.getElementById('navbar');
-    if (nav) {
-        nav.innerHTML = \`
-            <a href="home.html">Home</a>
-            <a href="alliances.html">Alliances</a>
-            <a href="announcements.html">Announcements</a>
-            <a href="tools.html">Tools</a>
-            <a href="applications.html">Applications</a>
-            <a href="admin.html">Admin</a>
-            <a href="#" onclick="logout()">Logout</a>
-        \`;
-    }
+  const loginBtn = document.getElementById('loginBtn');
+  if (loginBtn) {
+    loginBtn.addEventListener('click', login);
+  }
+  injectNavbar();
 });
