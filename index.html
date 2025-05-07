@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +13,31 @@
     <input type="password" id="accessCode" placeholder="Access Code" />
     <button id="loginBtn">Login</button>
   </div>
-  <script src="script.js"></script>
+
+  <!-- Make sure this loads AFTER elements are available -->
   <script>
-    // Ensure the login function is assigned after the DOM loads
-    document.getElementById('loginBtn').addEventListener('click', login);
+    // Declare the login function directly here or ensure it's in script.js
+    const accessCodes = {
+      'guestcode': 'guest',
+      'allycode': 'alliance',
+      'ownercode': 'owner'
+    };
+
+    function login() {
+      const code = document.getElementById('accessCode').value.trim();
+      const level = accessCodes[code];
+      if (level) {
+        localStorage.setItem('accessLevel', level);
+        window.location.href = 'home.html';
+      } else {
+        alert('Invalid access code.');
+      }
+    }
+
+    // Bind login function AFTER DOM is loaded
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('loginBtn').addEventListener('click', login);
+    });
   </script>
 </body>
 </html>
