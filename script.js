@@ -1,8 +1,10 @@
 // Access codes mapped to roles
 const accessCodes = {
-  'Guest123': 'guest',
-  'Ally123': 'alliance',
-  'OWN3R$!': 'owner'
+  'Guest': 'guest',
+  'TRG1': 'alliance',
+  'GreenT26':'alliance',
+  'Ivory': 'owner',
+  'ExecutiveOrders568934': 'owner'
 };
 
 // Login logic
