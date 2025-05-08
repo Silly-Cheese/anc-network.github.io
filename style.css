@@ -216,3 +216,45 @@ form textarea {
   font-size: 0.9rem;
 }
 
+.forgot-link {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.forgot-link a {
+  color: #00e5ff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.forgot-box {
+  margin-top: 1.5rem;
+  background: rgba(30, 30, 30, 0.8);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.forgot-box h3 {
+  margin-bottom: 0.5rem;
+}
+
+.forgot-box input {
+  width: 100%;
+  padding: 0.7rem;
+  margin: 0.5rem 0 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #1f1f1f;
+  color: #fff;
+}
+
+.temp-code-msg {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #66ffcc;
+}
+
+.hidden {
+  display: none;
+}
