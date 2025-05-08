@@ -1,1 +1,50 @@
-<!-- Similar to home.html, content specific to tools -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tools - A.N.C. Network</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <script src="script.js"></script>
+  <script>
+    // Allow all access levels
+    checkAccess(['guest', 'alliance', 'owner']);
+  </script>
+
+  <header>
+    <h1>Network Tools</h1>
+  </header>
+
+  <nav id="navbar"></nav>
+
+  <main>
+    <section class="tools-section">
+      <h2>Available Utilities</h2>
+      <p>The following internal tools are available based on your access level:</p>
+
+      <ul class="tools-list">
+        <li>
+          <strong>Alliance Directory</strong> — Browse verified allied groups and their roles.
+        </li>
+        <li>
+          <strong>Scheduling Calendar</strong> — Coordinate events and meetings (coming soon).
+        </li>
+        <li>
+          <strong>Verification Checker</strong> — Confirm user or group status in real time (owner only).
+        </li>
+        <li>
+          <strong>Announcements Broadcaster</strong> — Post and push updates (owner only).
+        </li>
+      </ul>
+
+      <p class="note">More tools will be added over time. If you have a tool suggestion, submit it via the application page.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Allied Nexus Collaborative Network</p>
+  </footer>
+</body>
+</html>
