@@ -1,1 +1,46 @@
-<!-- Similar to home.html, content specific to announcements -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Announcements - A.N.C. Network</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <script src="script.js"></script>
+  <script>
+    // All logged-in users can access this page
+    checkAccess(['guest', 'alliance', 'owner']);
+  </script>
+
+  <header>
+    <h1>Network Announcements</h1>
+  </header>
+
+  <nav id="navbar"></nav>
+
+  <main>
+    <section class="announcements">
+      <h2>Latest Updates</h2>
+
+      <article class="announcement">
+        <h3>🎯 Operational Launch</h3>
+        <p><strong>Date:</strong> May 5, 2025</p>
+        <p>The A.N.C. Network is officially live! Welcome to all partners, officers, and observers. Use the tools and alliance panels to coordinate efforts effectively.</p>
+      </article>
+
+      <article class="announcement">
+        <h3>🔧 System Patch 1.0.1</h3>
+        <p><strong>Date:</strong> May 6, 2025</p>
+        <p>Fixed login button bug, added access controls to all key pages, and finalized navigation for both mobile and desktop views.</p>
+      </article>
+
+      <!-- Add more announcements as needed -->
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Allied Nexus Collaborative Network</p>
+  </footer>
+</body>
+</html>
