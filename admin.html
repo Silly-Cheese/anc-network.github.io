@@ -1,1 +1,41 @@
-<!-- Similar to home.html, restricted to owners only -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - A.N.C. Network</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <script src="script.js"></script>
+  <script>
+    // Only owners can access this page
+    checkAccess(['owner']);
+  </script>
+
+  <header>
+    <h1>Admin Panel</h1>
+  </header>
+
+  <nav id="navbar"></nav>
+
+  <main>
+    <section>
+      <h2>Owner Tools & Controls</h2>
+      <p>Welcome, Owner. This panel gives you full access to internal controls.</p>
+
+      <ul class="admin-options">
+        <li>View alliance logs</li>
+        <li>Manage access codes (manually via script.js)</li>
+        <li>Post internal announcements</li>
+        <li>Review applications</li>
+        <li>System diagnostics (placeholder)</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Allied Nexus Collaborative Network</p>
+  </footer>
+</body>
+</html>
