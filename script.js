@@ -1,111 +1,79 @@
-// Access codes mapped to roles
+// Hardcoded permanent access codes
 const accessCodes = {
-  'Guest': 'guest',
-  'TRG1': 'alliance',
-  'GreenT26':'alliance',
-  'thedevisc00l': 'alliance',
-  'Ivory': 'owner',
-  'ExecutiveOrders568934': 'owner'
+  guest: ["Guest123"],
+  alliance: ["GreenT26", "TRG1", "thedevisc00l"],
+  owner: ["ExecutiveOrders568934", "Ivory"]
 };
 
-// Login logic
+// LOGIN FUNCTION
 function login() {
-  const input = document.getElementById('accessCode');
-  if (!input) return;
+  const input = document.getElementById("accessCode").value.trim().toUpperCase();
+  const tempCodes = JSON.parse(sessionStorage.getItem("tempCodes") || "[]");
 
-  const code = input.value.trim();
-  const level = accessCodes[code];
+  let accessLevel = null;
 
-  if (level) {
-    localStorage.setItem('accessLevel', level);
-    window.location.href = 'home.html';
+  if (accessCodes.owner.includes(input)) {
+    accessLevel = "owner";
+  } else if (accessCodes.alliance.includes(input)) {
+    accessLevel = "alliance";
+  } else if (accessCodes.guest.includes(input) || tempCodes.includes(input)) {
+    accessLevel = "guest";
+  }
+
+  if (accessLevel) {
+    localStorage.setItem("accessLevel", accessLevel);
+    sessionStorage.removeItem("tempCodes");
+    window.location.href = "home.html";
   } else {
-    alert('Invalid access code.');
+    document.getElementById("loginError").textContent = "Invalid access code.";
   }
 }
 
-// Logout clears session
-function logout() {
-  localStorage.clear();
-  window.location.href = 'index.html';
-}
-
-// Check if the current user has access to the page
-function checkAccess(allowedLevels = []) {
-  const level = localStorage.getItem('accessLevel');
-  if (!level || (allowedLevels.length && !allowedLevels.includes(level))) {
-    window.location.href = 'index.html';
-  }
-}
-
-// Dynamic navbar injection
-function injectNavbar() {
-  const nav = document.getElementById('navbar');
-  if (!nav) return;
-
-  const level = localStorage.getItem('accessLevel');
-
-  const links = [
-    { href: 'home.html', label: 'Home' },
-    { href: 'alliances.html', label: 'Alliances' },
-    { href: 'announcements.html', label: 'Announcements' },
-    { href: 'tools.html', label: 'Tools' },
-    { href: 'applications.html', label: 'Applications' },
-  ];
-
-  if (level === 'owner') {
-    links.push({ href: 'admin.html', label: 'Admin' });
-  }
-
-  links.push({ href: '#', label: 'Logout', onclick: 'logout()' });
-
-  nav.innerHTML = links.map(link =>
-    `<a href="${link.href}" ${link.onclick ? `onclick="${link.onclick}"` : ''}>${link.label}</a>`
-  ).join('');
-}
-
-// DOM ready handler
-document.addEventListener('DOMContentLoaded', () => {
-  const loginBtn = document.getElementById('loginBtn');
-  if (loginBtn) {
-    loginBtn.addEventListener('click', login);
-  }
-  injectNavbar();
-});
-
+// FORGOT PASSWORD WORKFLOW
 function showForgotForm() {
   document.getElementById("forgotBox").classList.remove("hidden");
 }
 
 function submitForgot() {
   const alliance = document.getElementById("allianceName").value.trim();
-  if (!alliance) {
-    alert("Please enter your alliance name.");
+  const username = document.getElementById("robloxUsername").value.trim();
+
+  if (!alliance || !username) {
+    alert("Please enter both your alliance name and Roblox username.");
     return;
   }
 
-  const tempCode = Math.random().toString(36).substring(2, 10).toUpperCase();
+  const tempCode = "TEMP_" + Math.random().toString(36).substring(2, 8).toUpperCase();
+  const tempCodes = JSON.parse(sessionStorage.getItem("tempCodes") || "[]");
+  tempCodes.push(tempCode);
+  sessionStorage.setItem("tempCodes", JSON.stringify(tempCodes));
 
-  // Show code to user
-  document.getElementById("tempCodeMsg").innerText = `Your temporary access code: ${tempCode}`;
+  document.getElementById("tempCodeMsg").innerText =
+    `Your temporary code: ${tempCode}\nYou can now log in with it.`;
 
-  // Send email via Formspree
+  // Send email via Formspree (replace with your Formspree endpoint)
   fetch("https://formspree.io/f/xldbnkby", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      _replyto: "temp@anc.network", // dummy sender
-      message: `Temporary code request from: ${alliance}\nGenerated Code: ${tempCode}`
+      _replyto: "temp@anc.network",
+      subject: "Temporary Code Requested",
+      message: `Alliance: ${alliance}\nRoblox Username: ${username}\nTemp Code: ${tempCode}`
     })
-  })
-  .then(res => {
-    if (res.ok) {
-      console.log("Email sent to admin.");
-    } else {
-      console.error("Formspree error:", res.status);
-    }
-  });
+  }).catch(err => console.error("Formspree request failed:", err));
 }
 
+// PROTECTED PAGE ACCESS CHECK
+function checkAccess(allowedLevels) {
+  const level = localStorage.getItem("accessLevel");
+  if (!allowedLevels.includes(level)) {
+    window.location.href = "index.html";
+  }
+}
+
+// LOGOUT FUNCTION
+function logout() {
+  localStorage.removeItem("accessLevel");
+  sessionStorage.removeItem("tempCodes");
+  window.location.href = "index.html";
+}
