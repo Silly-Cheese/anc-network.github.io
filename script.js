@@ -72,3 +72,40 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   injectNavbar();
 });
+
+function showForgotForm() {
+  document.getElementById("forgotBox").classList.remove("hidden");
+}
+
+function submitForgot() {
+  const alliance = document.getElementById("allianceName").value.trim();
+  if (!alliance) {
+    alert("Please enter your alliance name.");
+    return;
+  }
+
+  const tempCode = Math.random().toString(36).substring(2, 10).toUpperCase();
+
+  // Show code to user
+  document.getElementById("tempCodeMsg").innerText = `Your temporary access code: ${tempCode}`;
+
+  // Send email via Formspree
+  fetch("https://formspree.io/f/xldbnkby", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      _replyto: "temp@anc.network", // dummy sender
+      message: `Temporary code request from: ${alliance}\nGenerated Code: ${tempCode}`
+    })
+  })
+  .then(res => {
+    if (res.ok) {
+      console.log("Email sent to admin.");
+    } else {
+      console.error("Formspree error:", res.status);
+    }
+  });
+}
+
