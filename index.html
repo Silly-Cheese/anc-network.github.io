@@ -2,30 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ANC Network Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A.N.C. Network – Login</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="login-body">
   <div class="login-container">
+    <h1 class="login-title">A.N.C. Network</h1>
+    <p class="login-subtitle">Allied Nexus Collaborative</p>
+
     <div class="login-box">
-      <h1>Welcome to the A.N.C. Network</h1>
-      <p>Please enter your access code</p>
+      <input type="text" id="accessCode" placeholder="Enter Access Code" class="login-input" />
+      <button id="loginBtn" class="login-button" onclick="login()">Login</button>
+      <p id="loginError" class="login-error"></p>
+    </div>
 
-      <input type="text" id="accessCode" placeholder="Enter Access Code" />
-      <button id="loginBtn" onclick="login()">Login</button>
-      <p id="loginError" class="error-message"></p>
+    <p class="forgot-link" onclick="showForgotForm()">Forgot or need a temporary code?</p>
 
-      <p class="forgot-link" onclick="showForgotForm()">Forgot Password?</p>
-
-      <div id="forgotBox" class="forgot-box hidden">
-        <h3>Temporary Access Request</h3>
-        <p>Enter your alliance name and Roblox username to receive a temporary login code.</p>
-        <input type="text" id="allianceName" placeholder="Alliance Name" />
-        <input type="text" id="robloxUsername" placeholder="Roblox or Discord Username" />
-        <button onclick="submitForgot()">Generate Temporary Code</button>
-        <p id="tempCodeMsg" class="temp-code-msg"></p>
-      </div>
+    <div id="forgotBox" class="forgot-box hidden">
+      <input type="text" id="robloxUsername" placeholder="Your Roblox or Discord Username" class="login-input" />
+      <input type="text" id="allianceName" placeholder="Your Alliance Name" class="login-input" />
+      <button onclick="submitForgot()" class="login-button alt">Request Temporary Code</button>
+      <p id="tempCodeMsg" class="temp-msg"></p>
     </div>
   </div>
 
