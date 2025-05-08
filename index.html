@@ -3,16 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ANC Network - Login</title>
+  <title>A.N.C. Network Login</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="login-container">
-    <h1>A.N.C. Network</h1>
-    <p>Enter Access Code</p>
-    <input type="password" id="accessCode" placeholder="Access Code" />
-    <button id="loginBtn">Login</button>
-  </div>
+<body class="login-page">
+  <main class="login-container">
+    <div class="login-card">
+      <h1>Welcome to A.N.C. Network</h1>
+      <p class="subtitle">Secure Access Portal</p>
+      <input type="password" id="accessCode" placeholder="Enter your access code" />
+      <button id="loginBtn">Login</button>
+      <p id="loginError" class="error-message"></p>
+    </div>
+  </main>
+
   <script src="script.js"></script>
+  <script>
+    document.getElementById('loginBtn').addEventListener('click', login);
+  </script>
 </body>
 </html>
