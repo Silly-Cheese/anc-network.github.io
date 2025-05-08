@@ -1,43 +1,137 @@
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #121212;
-    color: #fff;
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+html, body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0e0e0e;
+  color: #f2f2f2;
+  min-height: 100vh;
+}
+
+/* Layout */
 header, footer {
-    background: #1a1a1a;
-    padding: 1rem;
-    text-align: center;
+  text-align: center;
+  padding: 1rem;
+  background-color: #121212;
+  border-bottom: 1px solid #222;
 }
+
+footer {
+  border-top: 1px solid #222;
+  font-size: 0.9rem;
+}
+
+main {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h1, h2 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Navigation */
 nav {
-    display: flex;
-    justify-content: center;
-    background-color: #000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #1a1a1a;
+  padding: 0.5rem;
 }
+
 nav a {
-    padding: 1rem;
-    text-decoration: none;
-    color: #fff;
-    transition: background 0.3s;
+  color: #f2f2f2;
+  margin: 0 1rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
+  border-radius: 8px;
 }
+
 nav a:hover {
-    background: #333;
+  background-color: #333333;
 }
-.login-container {
-    max-width: 300px;
-    margin: 100px auto;
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  nav a {
+    margin: 0.3rem 0;
     text-align: center;
+  }
 }
-.login-container input {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
+
+/* Buttons */
+button {
+  background-color: #333;
+  color: #f2f2f2;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-.login-container button {
-    padding: 0.5rem 1rem;
+
+button:hover {
+  background-color: #555;
 }
-@media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-    }
+
+/* Form Styling */
+form label {
+  display: block;
+  margin: 1rem 0 0.3rem;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #1f1f1f;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.note {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+/* Form Embed Styling */
+.form-wrapper {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 16px;
+  background-color: #1a1a1a;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.form-wrapper iframe {
+  width: 100%;
+  height: 800px;
+  border: none;
+  border-radius: 12px;
+  background-color: white;
 }
