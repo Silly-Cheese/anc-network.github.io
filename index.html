@@ -23,3 +23,13 @@
   </script>
 </body>
 </html>
+<!-- Add below the login button and error message -->
+<p class="forgot-link"><a href="#" onclick="showForgotForm()">Forgot Password?</a></p>
+
+<div id="forgotBox" class="forgot-box hidden">
+  <h3>Temporary Access Request</h3>
+  <p>Enter your alliance name to request a temporary code.</p>
+  <input type="text" id="allianceName" placeholder="Alliance Name" />
+  <button onclick="submitForgot()">Generate Temp Code</button>
+  <p id="tempCodeMsg" class="temp-code-msg"></p>
+</div>
