@@ -1,1 +1,47 @@
-<!-- Similar to home.html, content specific to applications -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Applications - A.N.C. Network</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <script src="script.js"></script>
+  <script>
+    // Allow all access levels
+    checkAccess(['guest', 'alliance', 'owner']);
+  </script>
+
+  <header>
+    <h1>Application Center</h1>
+  </header>
+
+  <nav id="navbar"></nav>
+
+  <main>
+    <section class="application-section">
+      <h2>Submit Your Application</h2>
+      <p>If you would like to join the Allied Nexus Collaborative or submit a proposal, please complete the form below.</p>
+
+      <form class="application-form">
+        <label for="name">Group or User Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your group or Roblox username" required>
+
+        <label for="reason">Reason for Applying</label>
+        <textarea id="reason" name="reason" placeholder="Why do you want to join or partner with A.N.C.?" required></textarea>
+
+        <label for="contact">Contact Information</label>
+        <input type="text" id="contact" name="contact" placeholder="Discord, Roblox profile, etc." required>
+
+        <button type="submit" disabled>Submit (Not Yet Active)</button>
+        <p class="note">This form is currently inactive. Submission handling will be added in a future update.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Allied Nexus Collaborative Network</p>
+  </footer>
+</body>
+</html>
