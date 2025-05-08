@@ -12,12 +12,12 @@ function login() {
 
   let accessLevel = null;
 
-  // Check permanent codes
-  if (accessCodes.owner.includes(input)) {
+  // Check permanent codes (case-insensitive)
+  if (accessCodes.owner.some(code => code.toUpperCase() === input)) {
     accessLevel = "owner";
-  } else if (accessCodes.alliance.includes(input)) {
+  } else if (accessCodes.alliance.some(code => code.toUpperCase() === input)) {
     accessLevel = "alliance";
-  } else if (accessCodes.guest.includes(input)) {
+  } else if (accessCodes.guest.some(code => code.toUpperCase() === input)) {
     accessLevel = "guest";
   }
 
@@ -65,8 +65,8 @@ function submitForgot() {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       _replyto: "temp@anc.network",
-      subject: "Temporary Code Requested",
-      message: `Alliance: ${alliance}\nRoblox or Discord Username: ${username}\nTemp Code: ${tempCode}`
+      subject: "Temporary Code Used",
+      message: `Alliance: ${alliance}\nRoblox Username: ${username}\nTemp Code: ${tempCode}`
     })
   }).catch(err => console.error("Formspree request failed:", err));
 }
