@@ -3,33 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>A.N.C. Network Login</title>
+  <title>ANC Network Login</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="login-page">
-  <main class="login-container">
-    <div class="login-card">
-      <h1>Welcome to A.N.C. Network</h1>
-      <p class="subtitle">Secure Access Portal</p>
-      <input type="password" id="accessCode" placeholder="Enter your access code" />
-      <button id="loginBtn">Login</button>
+<body class="login-body">
+  <div class="login-container">
+    <div class="login-box">
+      <h1>Welcome to the A.N.C. Network</h1>
+      <p>Please enter your access code</p>
+
+      <input type="text" id="accessCode" placeholder="Enter Access Code" />
+      <button id="loginBtn" onclick="login()">Login</button>
       <p id="loginError" class="error-message"></p>
+
+      <p class="forgot-link" onclick="showForgotForm()">Forgot Password?</p>
+
+      <div id="forgotBox" class="forgot-box hidden">
+        <h3>Temporary Access Request</h3>
+        <p>Enter your alliance name and Roblox username to receive a temporary login code.</p>
+        <input type="text" id="allianceName" placeholder="Alliance Name" />
+        <input type="text" id="robloxUsername" placeholder="Roblox or Discord Username" />
+        <button onclick="submitForgot()">Generate Temporary Code</button>
+        <p id="tempCodeMsg" class="temp-code-msg"></p>
+      </div>
     </div>
-  </main>
+  </div>
 
   <script src="script.js"></script>
-  <script>
-    document.getElementById('loginBtn').addEventListener('click', login);
-  </script>
 </body>
 </html>
-<!-- Add below the login button and error message -->
-<p class="forgot-link"><a href="#" onclick="showForgotForm()">Forgot Password?</a></p>
-
-<div id="forgotBox" class="forgot-box hidden">
-  <h3>Temporary Access Request</h3>
-  <p>Enter your alliance name to request a temporary code.</p>
-  <input type="text" id="allianceName" placeholder="Alliance Name" />
-  <button onclick="submitForgot()">Generate Temp Code</button>
-  <p id="tempCodeMsg" class="temp-code-msg"></p>
-</div>
