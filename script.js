@@ -3,6 +3,7 @@ const accessCodes = {
   'Guest': 'guest',
   'TRG1': 'alliance',
   'GreenT26':'alliance',
+  'thedevisc00l': 'alliance',
   'Ivory': 'owner',
   'ExecutiveOrders568934': 'owner'
 };
