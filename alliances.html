@@ -1,1 +1,45 @@
-<!-- Similar to home.html, content specific to alliances -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alliances - A.N.C. Network</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <script src="script.js"></script>
+  <script>
+    // Only alliance members and owners can access
+    checkAccess(['alliance', 'owner']);
+  </script>
+
+  <header>
+    <h1>Allied Networks</h1>
+  </header>
+
+  <nav id="navbar"></nav>
+
+  <main>
+    <section>
+      <h2>Alliance Hub</h2>
+      <p>Welcome to the Alliance Center. This space contains collaboration tools, directories, and news relevant to our partner groups.</p>
+
+      <div class="alliances-list">
+        <div class="alliance-card">
+          <h3>Alliance Name #1</h3>
+          <p>Summary, goals, or contact person here.</p>
+        </div>
+        <div class="alliance-card">
+          <h3>Alliance Name #2</h3>
+          <p>Include basic details about the group's involvement.</p>
+        </div>
+        <!-- Add more alliance entries as needed -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Allied Nexus Collaborative Network</p>
+  </footer>
+</body>
+</html>
